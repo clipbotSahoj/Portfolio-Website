@@ -82,6 +82,10 @@
     asl: [{ src: 'images/asl-terminal.png', caption: 'Edge-AI Sign Language Translator — terminal output' }],
     xchange: [{ src: 'images/xchange-app.png', caption: 'XChange — app screenshot' }],
     pihole: [{ src: 'images/pihole-dashboard.png', caption: 'Pi-hole dashboard — network-wide blocking stats' }],
+    lerobot: [
+      { src: 'images/lerobot-training-viz-1.jpg', caption: 'LeRobot SO101 — teleoperation session, action/observation plots' },
+      { src: 'images/lerobot-training-viz-2.jpg', caption: 'LeRobot SO101 — dataset visualization, pick-and-place task' },
+    ],
   };
 
   const lightbox = document.getElementById('lightbox');
