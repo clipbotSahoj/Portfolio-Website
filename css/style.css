@@ -734,7 +734,8 @@ section#home { border-top: none; }
 .stats-grid > :nth-child(3).reveal,
 .timeline-item:nth-child(3).reveal { transition-delay: 140ms; }
 .projects-bento > :nth-child(4).reveal,
-.stats-grid > :nth-child(4).reveal { transition-delay: 210ms; }
+.stats-grid > :nth-child(4).reveal,
+.activity-list > :nth-child(4).reveal { transition-delay: 210ms; }
 .projects-bento > :nth-child(5).reveal { transition-delay: 280ms; }
 
 /* ==========================================================================
