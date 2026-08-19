@@ -35,10 +35,15 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0B0F14">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
+
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -47,8 +52,8 @@
   <div class="container nav-inner">
     <a href="#home" class="nav-logo" aria-label="Sahoj Patkar — back to top">
       <svg class="nav-monogram" viewBox="0 0 64 64" aria-hidden="true">
-        <rect width="64" height="64" rx="14" fill="#2563EB"/>
-        <text x="32" y="42" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="26" fill="#FFFFFF" text-anchor="middle">SP</text>
+        <rect width="64" height="64" rx="14" fill="#4FB8FF"/>
+        <text x="32" y="42" font-family="'Chakra Petch', Arial, sans-serif" font-weight="700" font-size="26" fill="#04141F" text-anchor="middle">SP</text>
       </svg>
       <span class="nav-wordmark">Sahoj Patkar</span>
     </a>
@@ -107,9 +112,10 @@
 
   <!-- ============================= HERO ============================= -->
   <section id="home" class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-bg-dots" aria-hidden="true"></div>
+    <canvas id="hero-circuit" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
     <div class="container hero-inner">
+      <span class="hero-watermark" aria-hidden="true">PATKAR</span>
       <span class="hero-eyebrow"><span class="pulse" aria-hidden="true"></span>Open to internships &amp; collaborations</span>
       <h1>Sahoj Patkar</h1>
       <p class="tagline">Robotics, Embedded Systems &amp; Aerospace Software Engineer</p>
@@ -132,6 +138,45 @@
           View Projects
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
+      </div>
+      <div class="hero-telemetry">
+        <span><b>OBC</b> NANOMIND SDR MK3</span>
+        <span><b>LINK</b> RS-422 full-duplex</span>
+        <span><b>PROTOCOL</b> CCSDS Space Packet</span>
+        <span><b>SYNC</b> 0x1ACFFC1D</span>
+        <span><b>STATUS</b> NOMINAL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= STATS ============================= -->
+  <section class="stats-strip" aria-label="Highlights">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal stat-copper">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <div class="stat-value"><span class="stat-num" data-target="5" aria-hidden="true">0</span><span class="stat-suffix" aria-hidden="true">+</span></div>
+          <span class="sr-only">5+</span>
+          <div class="stat-label">Engineering Projects</div>
+        </div>
+        <div class="stat-card reveal stat-signal">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="8" height="8" rx="1.5"/><path d="M13 15h8M13 11h5a3 3 0 003-3V6M7 11V6a3 3 0 013-3h4"/></svg></div>
+          <div class="stat-value"><span class="stat-num" data-target="4" aria-hidden="true">0</span></div>
+          <span class="sr-only">4</span>
+          <div class="stat-label">Engineering Teams</div>
+        </div>
+        <div class="stat-card reveal stat-amber">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M9 13.5L7 22l5-3 5 3-2-8.5"/></svg></div>
+          <div class="stat-value"><span class="stat-num" data-target="3" aria-hidden="true">0</span></div>
+          <span class="sr-only">3</span>
+          <div class="stat-label">Awards &amp; Honors</div>
+        </div>
+        <div class="stat-card reveal stat-nominal">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 6l-4 12"/></svg></div>
+          <div class="stat-value"><span class="stat-num" data-target="15" aria-hidden="true">0</span><span class="stat-suffix" aria-hidden="true">+</span></div>
+          <span class="sr-only">15+</span>
+          <div class="stat-label">Tools &amp; Technologies</div>
+        </div>
       </div>
     </div>
   </section>
@@ -194,7 +239,7 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Engineering Experience</span>
-        <h2 class="section-title" id="experience-title">Where I've worked</h2>
+        <h2 class="section-title" id="experience-title">Current &amp; Past Roles</h2>
       </div>
 
       <div class="timeline">
@@ -268,13 +313,13 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Projects &amp; Portfolio</span>
-        <h2 class="section-title" id="projects-title">Things I've built</h2>
+        <h2 class="section-title" id="projects-title">Current &amp; Past Projects</h2>
       </div>
 
-      <div class="projects-grid">
+      <div class="projects-bento">
 
         <!-- Autonomous Mail-Retrieval Drone -->
-        <article class="project-card reveal">
+        <article class="project-card reveal bento-feature cat-hardware">
           <div class="project-media">
             <div class="project-media-grid">
               <button type="button" data-lightbox-group="drone" data-lightbox-index="0" aria-label="Open full drone photo">
@@ -287,9 +332,10 @@
                 <img src="images/drone-cad-2.png" alt="CAD model detail of the drone's gripper mechanism" loading="lazy" width="300" height="225">
               </button>
             </div>
-            <span class="project-media-more">+1 more</span>
+            <button type="button" class="project-media-more" data-lightbox-group="drone" data-lightbox-index="3" aria-label="View 1 more photo: gripper test">+1 more</button>
           </div>
           <div class="project-body">
+            <span class="project-cat">Hardware · Featured</span>
             <div class="project-meta">
               <h3 class="project-title">Autonomous Mail-Retrieval Drone</h3>
               <span class="project-role">Lead Developer</span>
@@ -308,14 +354,41 @@
           </div>
         </article>
 
+        <!-- LeRobot SO101 -->
+        <article class="project-card reveal bento-med cat-ml">
+          <div class="project-media">
+            <button type="button" data-lightbox-group="lerobot" data-lightbox-index="0" aria-label="Open LeRobot SO101 training visualization image">
+              <img src="images/lerobot-training-viz-2.jpg" alt="Front and gripper camera feeds from the LeRobot SO101 arm on a wooden table with an orange bowl as the target object, alongside real-time observation and action joint-position plots" loading="lazy" width="1350" height="1800">
+            </button>
+          </div>
+          <div class="project-body">
+            <span class="project-cat">ML / Robotics</span>
+            <div class="project-meta">
+              <h3 class="project-title">HuggingFace AI Robotic Arm (LeRobot SO101)</h3>
+              <span class="project-role">ML Developer</span>
+            </div>
+            <span class="project-role">Fall 2025 – Present</span>
+            <ul class="project-bullets">
+              <li>Utilizing Multiview OpenCV and Python to implement real-time object detection, classification, and spatial tracking.</li>
+              <li>Training an Action Chunking Transformer (ACT) policy using demonstration data collected with LeRobot to enable autonomous manipulation on the physical SO101 robotic arm.</li>
+            </ul>
+            <div class="tag-list project-tags">
+              <span class="tag">OpenCV</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">LeRobot</span>
+            </div>
+          </div>
+        </article>
+
         <!-- ASL Translator -->
-        <article class="project-card reveal">
+        <article class="project-card reveal bento-med cat-software">
           <div class="project-media">
             <button type="button" data-lightbox-group="asl" data-lightbox-index="0" aria-label="Open ASL translator terminal screenshot">
               <img src="images/asl-terminal.png" alt="Terminal output of the real-time ASL translator showing detected hand landmarks and translated text" loading="lazy" width="600" height="375">
             </button>
           </div>
           <div class="project-body">
+            <span class="project-cat">Software</span>
             <div class="project-meta">
               <h3 class="project-title">Edge-AI Sign Language Translator</h3>
               <span class="project-role">Developer</span>
@@ -334,39 +407,15 @@
           </div>
         </article>
 
-        <!-- LeRobot SO101 -->
-        <article class="project-card reveal">
-          <div class="project-media">
-            <button type="button" data-lightbox-group="lerobot" data-lightbox-index="0" aria-label="Open LeRobot SO101 training visualization image">
-              <img src="images/lerobot-training-viz-2.jpg" alt="Front and gripper camera feeds from the LeRobot SO101 arm on a wooden table with an orange bowl as the target object, alongside real-time observation and action joint-position plots" loading="lazy" width="1350" height="1800">
-            </button>
-          </div>
-          <div class="project-body">
-            <div class="project-meta">
-              <h3 class="project-title">HuggingFace AI Robotic Arm (LeRobot SO101)</h3>
-              <span class="project-role">ML Developer</span>
-            </div>
-            <span class="project-role">Fall 2025 – Present</span>
-            <ul class="project-bullets">
-              <li>Utilizing Multiview OpenCV and Python to implement real-time object detection, classification, and spatial tracking.</li>
-              <li>Training an Action Chunking Transformer (ACT) policy using demonstration data collected with LeRobot to enable autonomous manipulation on the physical SO101 robotic arm.</li>
-            </ul>
-            <div class="tag-list project-tags">
-              <span class="tag">OpenCV</span>
-              <span class="tag">PyTorch</span>
-              <span class="tag">LeRobot</span>
-            </div>
-          </div>
-        </article>
-
         <!-- XChange -->
-        <article class="project-card reveal">
+        <article class="project-card reveal bento-small cat-software">
           <div class="project-media">
             <button type="button" data-lightbox-group="xchange" data-lightbox-index="0" aria-label="Open XChange app screenshot">
               <img src="images/xchange-app.png" alt="Screenshot of the XChange mobile app interface for peer-to-peer local item exchanges" loading="lazy" width="600" height="375">
             </button>
           </div>
           <div class="project-body">
+            <span class="project-cat">Software</span>
             <div class="project-meta">
               <h3 class="project-title">Co-Founded XChange</h3>
               <span class="project-role">Co-Founder &amp; Lead Developer</span>
@@ -384,13 +433,14 @@
         </article>
 
         <!-- Pi-hole / Tailscale -->
-        <article class="project-card reveal">
+        <article class="project-card reveal bento-small cat-hardware">
           <div class="project-media">
             <button type="button" data-lightbox-group="pihole" data-lightbox-index="0" aria-label="Open Pi-hole dashboard screenshot">
               <img src="images/pihole-dashboard.png" alt="Pi-hole admin dashboard showing network-wide ad and tracker blocking statistics" loading="lazy" width="600" height="375">
             </button>
           </div>
           <div class="project-body">
+            <span class="project-cat">Hardware</span>
             <div class="project-meta">
               <h3 class="project-title">24/7 Worldwide Ad-Blocker &amp; Secure Remote Network</h3>
               <span class="project-role">Developer</span>
@@ -533,6 +583,6 @@
   </button>
 </div>
 
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=5"></script>
 </body>
 </html>
